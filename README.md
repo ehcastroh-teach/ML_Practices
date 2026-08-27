@@ -119,3 +119,15 @@ Dataset: `sklearn.digits` and `sklearn.breast_cancer` from scikit-learn (Pedrego
 Notebook structure adapted from in-class ML workshop materials on image classification and model selection.
 
 Bayesian optimization implementation uses [Optuna](https://optuna.org/) (Akiba et al., 2019).
+
+---
+
+## Contact
+
+<div align="center">
+  <img src="images/thumbnails/ehcastroh_teach_banner_flower.png" alt="ehcastroh" width="90" style="border-radius: 50%;" />
+
+  <sub>ehcastroh</sub>
+
+  <a href="https://github.com/ehcastroh">GitHub</a> · <a href="https://www.linkedin.com/in/ehcastroh/">LinkedIn</a>
+</div>
