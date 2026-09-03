@@ -64,9 +64,9 @@ Parts 3, 4, and 5 implement the three selection strategies. The key insight is P
 
 **Notebook 03 - Bayesian Hyperparameter Optimization**
 
-This notebook is independent - it uses breast cancer data and can be run without Notebooks 01 or 02. Parts 1 and 2 establish Grid Search and Random Search baselines; Part 2 also explains why random search with log-uniform priors is superior to grid search for scale hyperparameters.
+This notebook is independent - it uses the breast cancer dataset and can be run without Notebooks 01 or 02. Part 1 establishes Grid Search (Part 1.1) and Random Search (Part 1.2) baselines under the same evaluation budget, and explains why log-uniform distributions are necessary for scale hyperparameters.
 
-Part 2 (theory) is conceptual - work through the GP surrogate and acquisition function explanation before running Part 3. The toy visualization in Part 2 makes the exploration-exploitation trade-off concrete before the Optuna code in Part 3 runs the full optimization.
+Part 2 (theory) is conceptual - work through the Gaussian Process surrogate and acquisition function explanation before running Part 3. The toy visualization in Part 2 makes the exploration-exploitation trade-off concrete. Part 3 implements the full search with Optuna, which uses the Tree-structured Parzen Estimator (TPE) internally - a surrogate that handles mixed continuous, integer, and categorical search spaces. Part 4 consolidates all three strategies into a final comparison table and plot, and provides guidance on when each approach is appropriate given your evaluation budget and number of hyperparameters.
 
 ## How to Run
 
@@ -94,7 +94,8 @@ TensorFlow GPU acceleration is detected automatically if available. Notebooks 01
 | Convolutional filter | A small learned weight matrix applied at every spatial position of an image; enables translation equivariance |
 | Dropout | Regularization technique that randomly zeroes neuron outputs during training to prevent co-adaptation |
 | Ensemble | A set of models whose predictions are combined (typically by averaging) to reduce variance |
-| Forward Selection | Greedy algorithm that adds the best model at each step until a target ensemble size is reached |
+| Backward Elimination | Greedy algorithm that starts with all models in the ensemble and removes the least useful one at each step until the target size is reached |
+| Forward Selection | Greedy algorithm that starts from an empty ensemble and adds the best available model at each step until a target ensemble size is reached |
 | Gaussian Process | A probabilistic model over functions; used as a surrogate in Bayesian optimization to predict performance at untried settings |
 | Acquisition function | A function that uses the surrogate's posterior to score candidate hyperparameter settings, balancing exploration vs. exploitation |
 | Log-uniform distribution | A distribution uniform on the log scale; the right prior for hyperparameters that span orders of magnitude (learning rate, regularization) |
@@ -102,15 +103,17 @@ TensorFlow GPU acceleration is detected automatically if available. Notebooks 01
 | Random Search | Hyperparameter tuning that samples configurations independently at random; more efficient than grid search when few hyperparameters dominate |
 | Surrogate model | A cheap approximation of an expensive objective function; Bayesian optimization fits one to guide where to sample next |
 | Translation equivariance | A CNN property: a filter that detects a feature at one location also detects it at any other location without relearning |
+| Tree-structured Parzen Estimator (TPE) | The surrogate used by Optuna; models the distribution of hyperparameters that produced good results separately from those that produced poor results, and samples from the good distribution |
 
 ## Further Reading
 
-- "Gradient-based Learning Applied to Document Recognition," LeCun et al. (1998) - original CNN paper
-- "Random Search for Hyper-Parameter Optimization," Bergstra and Bengio, JMLR (2012)
-- "Ensemble Methods in Machine Learning," Dietterich (2000)
-- "Taking the Human Out of the Loop: A Review of Bayesian Optimization," Shahriari et al., IEEE (2016)
-- *Deep Learning*, Goodfellow, Bengio, Courville (2016) - Chapters 6 and 9
-- *The Elements of Statistical Learning*, Hastie, Tibshirani, Friedman (2009) - Chapter 8.8 on ensemble methods
+- "Gradient-based Learning Applied to Document Recognition" (1998)
+- "Random Search for Hyper-Parameter Optimization" (2012)
+- "Algorithms for Hyper-Parameter Optimization" (2011)
+- "Ensemble Methods in Machine Learning" (2000)
+- "Taking the Human Out of the Loop: A Review of Bayesian Optimization" (2016)
+- *Deep Learning* - Chapters 6 and 9
+- *The Elements of Statistical Learning* - Chapter 8.8 on ensemble methods
 
 ## Credits and Acknowledgements
 
