@@ -116,8 +116,6 @@ TensorFlow GPU acceleration is detected automatically if available. Notebooks 01
 
 Dataset: `sklearn.digits` and `sklearn.breast_cancer` from scikit-learn (Pedregosa et al., JMLR 2011).
 
-Notebook structure adapted from in-class ML workshop materials on image classification and model selection.
-
 Bayesian optimization implementation uses [Optuna](https://optuna.org/) (Akiba et al., 2019).
 
 ---
